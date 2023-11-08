@@ -2,7 +2,11 @@ import re
 
 from indexer import index
 
+print('Indexing... ', end='')
+
 trie = index()
+
+print('Done\n')
 
 search_string = input('Search something... ').lower()
 search_string = re.sub(r'["\',.!?;:/*\-+]', '', search_string)
@@ -25,10 +29,14 @@ def search_text(text, node):
     return urls
 
 
-result = []
+result = set()
+
+print('\nSearching... ', end='')
 
 for sep in separators:
-    result.extend(search_text(search_string, sep))
+    result.update(search_text(search_string, sep))
+
+print('Done')
 
 print()
 
