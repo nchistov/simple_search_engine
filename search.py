@@ -1,4 +1,5 @@
 import re
+from time import process_time
 
 from indexer import index
 
@@ -33,10 +34,14 @@ result = set()
 
 print('\nSearching... ', end='')
 
+start = process_time()
+
 for sep in separators:
     result.update(search_text(search_string, sep))
 
-print('Done')
+time = process_time() - start
+
+print(f'Done ({time})')
 
 print()
 
