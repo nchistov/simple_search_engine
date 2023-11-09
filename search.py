@@ -9,7 +9,7 @@ trie = index()
 print('Done\n')
 
 search_string = input('Search something... ').lower()
-search_string = re.sub(r'["\',.!?;:/*\-+]', '', search_string)
+search_string = re.sub(r'["\',.!?;:/*\-+()]', '', search_string).strip()
 
 separators = trie.separators[search_string[0]]
 
